@@ -26,16 +26,14 @@ public class TestaNodo {
             arvore.inserir(nodo);
         }
 
-        Arvore.nivel(arvore.raiz);
-
         System.out.println("Arvore préfixado:");
-        arvore.arvorePrefixado(arvore.raiz);
+        arvore.preOrdem(arvore.raiz);
         System.out.println();
         System.out.println("Arvore em ordem:");
-        arvore.arvoreEmOrdem(arvore.raiz);
+        arvore.emOrdem(arvore.raiz);
         System.out.println();
         System.out.println("Arvore pósfixado:");
-        arvore.arvorePosfixado(arvore.raiz);
+        arvore.posOrdem(arvore.raiz);
 
     }
 }

@@ -1,11 +1,9 @@
 package arvore.modelo;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 public class Arvore {
 
     //Atributo raiz do Nodo
+    //raiz é o nodo pai de todos, o primeiro dos primeiros.
     public Nodo raiz;
 
     //Método que insere um Nodo na Arvore
@@ -45,59 +43,42 @@ public class Arvore {
     }
 
     //método em forma de pilha(recursao) para trazer os vares da arvore de forma prefixada
-    public void arvorePrefixado(Nodo nodo){
+    //pré ordem retorna raiz, esquerda, direita
+    public void preOrdem(Nodo nodo){
         //se nodo nao for null
         if(nodo != null){
             //printa o numero do nodo
             System.out.print(nodo.numero + " ");
             //faz uma recursao passando o nodo atual.esquerda como novo valor até ser null
-            arvorePrefixado(nodo.esquerda);
+            preOrdem(nodo.esquerda);
             //faz uma recursao passando o nodo atual.direita como novo valor até ser null
-            arvorePrefixado(nodo.direita);
+            preOrdem(nodo.direita);
         }
     }
 
     //método em forma de pilha para trazer os vares da árvore de forma posfixada
-    public void arvorePosfixado(Nodo nodo){
+    //posordem retorna esquerda, direita, raiz
+    public void posOrdem(Nodo nodo){
         if(nodo != null){
             //faz uma recursao passando o nodo atual.esquerda como novo valor até ser null
-            arvorePosfixado(nodo.esquerda);
+            posOrdem(nodo.esquerda);
             //faz uma recursao passando o nodo atual.direita como novo valor até ser null
-            arvorePosfixado(nodo.direita);
+            posOrdem(nodo.direita);
             //printa o numero do nodo
             System.out.print(nodo.numero + " ");
         }
     }
 
     //método em forma de pilha para trazer os vares da arvore em ordem
-    public void arvoreEmOrdem(Nodo nodo) {
+    //retorna esquerda, raiz, direita
+    public void emOrdem(Nodo nodo) {
         if(nodo != null){
             //faz uma recursao passando o nodo atual.esquerda como novo valor até ser null
-            arvoreEmOrdem(nodo.esquerda);
+            emOrdem(nodo.esquerda);
             //printa o numero do nodo
             System.out.print(nodo.numero + " ");
             //faz uma recursao passando o nodo atual.direita como novo valor até ser null
-            arvoreEmOrdem(nodo.direita);
-        }
-    }
-
-    public static void nivel(Nodo nodo){
-        if(nodo == null){
-            System.out.println("Fila não existente.");
-        } else{
-            Deque<Nodo> fila = new ArrayDeque<>();
-            fila.add(nodo);
-            while(!fila.isEmpty()){
-                Nodo atual = fila.removeFirst();
-
-                System.out.println(atual.numero + ", ");
-                if(atual.esquerda != null){
-                    fila.add(atual.esquerda);
-                }
-                if(atual.direita != null){
-                    fila.add(atual.direita);
-                }
-            }
+            emOrdem(nodo.direita);
         }
     }
 
